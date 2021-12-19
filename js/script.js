@@ -75,7 +75,7 @@ text.addEventListener('input', function (event){
 })
 
 form.addEventListener('submit', function (event){
-    if (!email.validity.valid && !name.validity.valid && !text.validity.valid) {
+    if (!email.validity.valid || !name.validity.valid || !text.validity.valid) {
         showError();
         event.preventDefault();
     }
