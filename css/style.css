@@ -351,7 +351,7 @@ textarea{
     margin-bottom: 35px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1200px){
 
     .topnav a:not(:first-child){
         display: none;
@@ -402,7 +402,7 @@ textarea{
     }
 }
 
-@media (max-width: 420px){
+@media (max-width: 600px){
 
     .pc_parts{
         flex-direction: column;
