@@ -1,0 +1,17 @@
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.csproj.AssemblyReference.cache
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.AssemblyInfoInputs.cache
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.AssemblyInfo.cs
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.csproj.CoreCompileInputs.cache
+D:\Projects\github\PCGuide\PCGuide.Service\bin\Debug\net5.0\PCGuide.Service.deps.json
+D:\Projects\github\PCGuide\PCGuide.Service\bin\Debug\net5.0\PCGuide.Service.dll
+D:\Projects\github\PCGuide\PCGuide.Service\bin\Debug\net5.0\PCGuide.Service.pdb
+D:\Projects\github\PCGuide\PCGuide.Service\bin\Debug\net5.0\PCGuide.DAL.dll
+D:\Projects\github\PCGuide\PCGuide.Service\bin\Debug\net5.0\PCGuide.Domain.dll
+D:\Projects\github\PCGuide\PCGuide.Service\bin\Debug\net5.0\PCGuide.DAL.pdb
+D:\Projects\github\PCGuide\PCGuide.Service\bin\Debug\net5.0\PCGuide.Domain.pdb
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.csproj.CopyComplete
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.dll
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\refint\PCGuide.Service.dll
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\PCGuide.Service.pdb
+D:\Projects\github\PCGuide\PCGuide.Service\obj\Debug\net5.0\ref\PCGuide.Service.dll

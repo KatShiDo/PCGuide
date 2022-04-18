@@ -1,0 +1,7 @@
+﻿@using PCGuide.Domain.Models
+@model IEnumerable<News>
+
+@foreach (News news in Model)
+{
+    <p>@news.Name</p>
+}
