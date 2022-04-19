@@ -47,7 +47,7 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<IEnumerable<News>>()
                 {
-                    Description = $"[GetNewsAsync] : {ex.Message}",
+                    Description = $"[GetNews] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }

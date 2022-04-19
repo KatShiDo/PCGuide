@@ -36,7 +36,7 @@ namespace PCGuide.Controllers
                 return View("GetNews", response.Data);
             }
 
-            return RedirectToAction("Error");
+            return RedirectToAction("Error", $"{response.Description}");
         }
     }
 }
