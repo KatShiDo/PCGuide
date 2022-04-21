@@ -21,7 +21,6 @@ namespace PCGuide.Domain.Models
 
         public string Description { get; set; }
 
-        [NotMapped]
-        public List<string> Tags { get; set; }
+        public string Tags { get; set; }
     }
 }

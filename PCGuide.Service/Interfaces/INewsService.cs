@@ -15,7 +15,7 @@ namespace PCGuide.Service.Interfaces
 
         Task<IBaseResponse<NewsViewModel>> GetNewsByIdAsync(Guid id);
 
-        Task<IBaseResponse<News>> CreateNewsAsync(NewsViewModel model, byte[] imageData);
+        Task<IBaseResponse<News>> CreateNewsAsync(NewsViewModel model);
 
         Task<IBaseResponse<bool>> DeleteNewsAsync(Guid id);
 

@@ -12,6 +12,7 @@ namespace PCGuide.Domain.ViewModels
     {
         public Guid Id { get; set; }
 
+        [Display(Name = "Картинка")]
         public IFormFile Image { get; set; }
 
         public byte[]? ImageData { get; set; }
@@ -20,13 +21,15 @@ namespace PCGuide.Domain.ViewModels
 
         [Display(Name = "Название новости")]
         [Required(ErrorMessage = "Заполните название новости")]
-        [MinLength(5, ErrorMessage = "Минимальная длина должна быть больше пяти символов")]
+        [MinLength(5, ErrorMessage = "Минимальная длина - 5 символов")]
         public string Name { get; set; }
 
         [Display(Name = "Описание новости")]
         public string Description { get; set; }
 
-        [Display(Name = "Тэги")]
         public List<string> Tags { get; set; }
+
+        [Display(Name = "Теги")]
+        public string TagsString { get; set; }
     }
 }

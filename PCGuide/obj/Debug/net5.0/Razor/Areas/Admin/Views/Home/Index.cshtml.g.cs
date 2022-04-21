@@ -19,8 +19,15 @@ using PCGuide.Domain.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\Projects\github\PCGuide\PCGuide\Areas\Admin\Views\_ViewImports.cshtml"
+using PCGuide.Domain.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"aa3cdd7ad0417b96302b97ab258f26697b27ab91", @"/Areas/Admin/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c6d6a2fa595e6f7773fb1a6d7a0795a0189a6a4c", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"10e4284697b81e69dfeb71ee03b3b1996a8da361", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Admin_Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -84,7 +91,7 @@ using PCGuide.Domain.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("</h1>\r\n    <div>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab918330", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab918513", async() => {
                 WriteLiteral("Редактировать новости");
             }
             );
@@ -104,7 +111,7 @@ using PCGuide.Domain.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("<br />\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab919920", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9110103", async() => {
                 WriteLiteral("Редактировать данные о комплектующих");
             }
             );
@@ -124,7 +131,7 @@ using PCGuide.Domain.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("<br />\r\n        <h3>Редактировать страницы сайта</h3>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9111574", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9111758", async() => {
                 WriteLiteral("Главная");
             }
             );
@@ -150,7 +157,7 @@ using PCGuide.Domain.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("<br />\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9113673", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9113857", async() => {
                 WriteLiteral("Сведения");
             }
             );
@@ -176,7 +183,7 @@ using PCGuide.Domain.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("<br />\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9115773", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9115957", async() => {
                 WriteLiteral("Каталог");
             }
             );
@@ -202,7 +209,7 @@ using PCGuide.Domain.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("<br />\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9117872", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9118056", async() => {
                 WriteLiteral("Новости");
             }
             );
@@ -228,7 +235,7 @@ using PCGuide.Domain.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("<br />\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9119971", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9120155", async() => {
                 WriteLiteral("О компании");
             }
             );
@@ -254,7 +261,7 @@ using PCGuide.Domain.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("<br />\r\n    </div>\r\n    <div>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9122102", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa3cdd7ad0417b96302b97ab258f26697b27ab9122286", async() => {
                 WriteLiteral("\r\n            <input type=\"submit\" value=\"Выйти\" />\r\n        ");
             }
             );

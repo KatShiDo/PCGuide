@@ -74,7 +74,8 @@ namespace PCGuide.Service.Implementations
                     DateCreate = news.DateCreate,
                     Name = news.Name,
                     Description = news.Description,
-                    Tags = news.Tags,
+                    Tags = news.Tags.Split(" ").ToList(),
+                    TagsString = news.Tags,
                     ImageData = news.Image
                 };
 
@@ -157,7 +158,7 @@ namespace PCGuide.Service.Implementations
             }
         }
 
-        public async Task<IBaseResponse<News>> CreateNewsAsync(NewsViewModel model, byte[] imageData)
+        public async Task<IBaseResponse<News>> CreateNewsAsync(NewsViewModel model)
         {
             var baseResponse = new BaseResponse<News>();
 
@@ -165,11 +166,12 @@ namespace PCGuide.Service.Implementations
             {
                 var news = new News()
                 {
+                    Id = model.Id,
                     DateCreate = DateTime.Now,
-                    Image = imageData,
+                    Image = model.ImageData,
                     Name = model.Name,
                     Description = model.Description,
-                    Tags = model.Tags
+                    Tags = model.TagsString
                 };
 
                 await _newsRepository.CreateAsync(news);
@@ -206,7 +208,7 @@ namespace PCGuide.Service.Implementations
 
                 news.Description = model.Description;
                 news.Name = model.Name;
-                news.Tags = model.Tags;
+                news.Tags = model.TagsString;
                 news.DateCreate = model.DateCreate;
                 news.Image = model.ImageData;
 
