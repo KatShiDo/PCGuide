@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCGuide.Domain.Models
+namespace PCGuide.Domain.Entities
 {
     public class SSD
     {

@@ -13,6 +13,7 @@ namespace PCGuide.Domain.ViewModels
         public Guid Id { get; set; }
 
         [Display(Name = "Картинка")]
+        [Required(ErrorMessage = "Загрузите картинку")]
         public IFormFile Image { get; set; }
 
         public byte[]? ImageData { get; set; }

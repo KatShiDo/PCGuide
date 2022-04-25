@@ -1,0 +1,66 @@
+﻿@model TextField
+
+<div>
+    @Html.Raw(Model.Text)
+</div>
+
+<h1 id="h1_pc_parts">Компьютерные комплектующие</h1>
+
+<div class="pc_parts__container">
+    <div class="pc_parts">
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="CPU" asp-action="Index">
+                <img src="~/img/cpu.jpg" alt="">
+            </a>
+            <h2>Процессор</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="CPUCooler" asp-action="Index">
+                <img src="~/img/cooling.jpg" alt="">
+            </a>
+            <h2>Охлаждение процессора</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="GPU" asp-action="Index">
+                <img src="~/img/graphics_card.jpg" alt="">
+            </a>
+            <h2>Видеокарта</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="RAM" asp-action="Index">
+                <img src="~/img/ram.jpg" alt="">
+            </a>
+            <h2>Оперативная память</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="Motherboard" asp-action="Index">
+                <img src="~/img/motherboard.jpg" alt="">
+            </a>
+            <h2>Материнская плата</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="HardDrive" asp-action="Index">
+                <img src="~/img/storage.jpg" alt="">
+            </a>
+            <h2>Жёсткий диск</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="SSD" asp-action="Index">
+                <img src="~/img/ssd.jpg" alt="">
+            </a>
+            <h2>SSD</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="PowerUnit" asp-action="Index">
+                <img src="~/img/power_unit.jpg" alt="">
+            </a>
+            <h2>Блок питания</h2>
+        </div>
+        <div class="pc_parts__item">
+            <a asp-area="" asp-controller="Frame" asp-action="Index">
+                <img src="~/img/frame.jpg" alt="">
+            </a>
+            <h2>Корпус</h2>
+        </div>
+    </div>
+</div>

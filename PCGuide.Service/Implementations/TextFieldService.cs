@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
 {
-    public class TextFieldService : ITextFieldService
+    public class TextFieldService : IBaseService<TextField, TextFieldViewModel>
     {
         private readonly IBaseRepository<TextField> _textFieldRepository;
 
@@ -23,7 +23,7 @@ namespace PCGuide.Service.Implementations
             _textFieldRepository = textFieldRepository;
         }
 
-        public async Task<IBaseResponse<TextField>> EditTextFieldAsync(Guid id, TextFieldViewModel model)
+        public async Task<IBaseResponse<TextField>> EditAsync(Guid id, TextFieldViewModel model)
         {
             var baseResponse = new BaseResponse<TextField>();
 
@@ -53,19 +53,89 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<TextField>()
                 {
-                    Description = $"[EditTextFieldAsync] : {ex.Message}",
+                    Description = $"[EditAsync] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<TextFieldViewModel>> GetTextFieldByCodeWordAsync(string codeWord)
+        //public async Task<IBaseResponse<TextFieldViewModel>> GetTextFieldByCodeWordAsync(string codeWord)
+        //{
+        //    var baseResponse = new BaseResponse<TextFieldViewModel>();
+
+        //    try
+        //    {
+        //        var textField = await _textFieldRepository.GetAll().FirstOrDefaultAsync(x => x.CodeWord == codeWord);
+
+        //        if (textField == null)
+        //        {
+        //            baseResponse.Description = "TextField not found";
+        //            baseResponse.StatusCode = StatusCode.NotFound;
+
+        //            return baseResponse;
+        //        }
+
+        //        var data = new TextFieldViewModel()
+        //        {
+        //            Id = textField.Id,
+        //            CodeWord = textField.CodeWord,
+        //            Title = textField.Title,
+        //            Text = textField.Text,
+        //        };
+
+        //        baseResponse.Data = data;
+        //        baseResponse.StatusCode = StatusCode.OK;
+
+        //        return baseResponse;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new BaseResponse<TextFieldViewModel>()
+        //        {
+        //            Description = $"[GetTextFieldByCodeWord] : {ex.Message}",
+        //            StatusCode = StatusCode.InternalServerError
+        //        };
+        //    }
+        //}
+
+        public IBaseResponse<IEnumerable<TextField>> GetAll()
+        {
+            var baseResponse = new BaseResponse<IEnumerable<TextField>>();
+
+            try
+            {
+                var textFields = _textFieldRepository.GetAll();
+
+                if (!textFields.Any())
+                {
+                    baseResponse.Description = "Found 0 elements";
+                    baseResponse.StatusCode = StatusCode.OK;
+
+                    return baseResponse;
+                }
+
+                baseResponse.Data = textFields;
+                baseResponse.StatusCode = StatusCode.OK;
+
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<IEnumerable<TextField>>()
+                {
+                    Description = $"[GetAll] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<TextFieldViewModel>> GetByIdAsync(Guid id)
         {
             var baseResponse = new BaseResponse<TextFieldViewModel>();
 
             try
             {
-                var textField = await _textFieldRepository.GetAll().FirstOrDefaultAsync(x => x.CodeWord == codeWord);
+                var textField = await _textFieldRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
 
                 if (textField == null)
                 {
@@ -92,41 +162,20 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<TextFieldViewModel>()
                 {
-                    Description = $"[GetTextFieldByCodeWord] : {ex.Message}",
+                    Description = $"[GetByIdAsync] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public IBaseResponse<IEnumerable<TextField>> GetTextFields()
+        public Task<IBaseResponse<TextField>> CreateAsync(TextFieldViewModel model)
         {
-            var baseResponse = new BaseResponse<IEnumerable<TextField>>();
+            throw new NotImplementedException();
+        }
 
-            try
-            {
-                var textFields = _textFieldRepository.GetAll();
-
-                if (!textFields.Any())
-                {
-                    baseResponse.Description = "Found 0 elements";
-                    baseResponse.StatusCode = StatusCode.OK;
-
-                    return baseResponse;
-                }
-
-                baseResponse.Data = textFields;
-                baseResponse.StatusCode = StatusCode.OK;
-
-                return baseResponse;
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<IEnumerable<TextField>>()
-                {
-                    Description = $"[GetTextFields] : {ex.Message}",
-                    StatusCode = StatusCode.InternalServerError
-                };
-            }
+        public Task<IBaseResponse<bool>> DeleteAsync(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

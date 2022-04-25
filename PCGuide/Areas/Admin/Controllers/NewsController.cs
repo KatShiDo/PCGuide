@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PCGuide.Domain.Entities;
 using PCGuide.Domain.ViewModels;
 using PCGuide.Service.Interfaces;
 using System;
@@ -13,18 +14,16 @@ namespace PCGuide.Areas.Admin.Controllers
     [Area("Admin")]
     public class NewsController : Controller
     {
-        private readonly INewsService _newsService;
-        private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly IBaseService<News, NewsViewModel> _newsService;
 
-        public NewsController(INewsService newsService, IWebHostEnvironment hostEnvironment)
+        public NewsController(IBaseService<News, NewsViewModel> newsService)
         {
             _newsService = newsService;
-            _hostEnvironment = hostEnvironment;
         }
 
         public IActionResult Index()
         {
-            return View(_newsService.GetNews().Data);
+            return View(_newsService.GetAll().Data);
         }
 
         public async Task<IActionResult> Edit(Guid id)
@@ -34,7 +33,7 @@ namespace PCGuide.Areas.Admin.Controllers
                 return View();
             }
             
-            var response = await _newsService.GetNewsByIdAsync(id);
+            var response = await _newsService.GetByIdAsync(id);
 
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
@@ -61,11 +60,11 @@ namespace PCGuide.Areas.Admin.Controllers
 
                 if (model.Id == default)
                 {
-                    await _newsService.CreateNewsAsync(model);
+                    await _newsService.CreateAsync(model);
                 }
                 else
                 {
-                    await _newsService.EditNewsAsync(model.Id, model);
+                    await _newsService.EditAsync(model.Id, model);
                 }
 
                 return RedirectToAction("Index");
@@ -77,7 +76,7 @@ namespace PCGuide.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _newsService.DeleteNewsAsync(id);
+            await _newsService.DeleteAsync(id);
             return RedirectToAction("Index");
         }
     }

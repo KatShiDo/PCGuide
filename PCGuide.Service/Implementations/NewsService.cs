@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PCGuide.DAL.Interfaces;
 using PCGuide.Domain.Enum;
-using PCGuide.Domain.Models;
+using PCGuide.Domain.Entities;
 using PCGuide.Domain.Response;
 using PCGuide.Domain.ViewModels;
 using PCGuide.Service.Interfaces;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
 {
-    public class NewsService : INewsService
+    public class NewsService : IBaseService<News, NewsViewModel>
     {
         private readonly IBaseRepository<News> _newsRepository;
 
@@ -22,7 +22,7 @@ namespace PCGuide.Service.Implementations
             _newsRepository = newsRepository;
         }
 
-        public IBaseResponse<IEnumerable<News>> GetNews()
+        public IBaseResponse<IEnumerable<News>> GetAll()
         {
             var baseResponse = new BaseResponse<IEnumerable<News>>();
 
@@ -47,13 +47,13 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<IEnumerable<News>>()
                 {
-                    Description = $"[GetNews] : {ex.Message}",
+                    Description = $"[GetAll] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<NewsViewModel>> GetNewsByIdAsync(Guid id)
+        public async Task<IBaseResponse<NewsViewModel>> GetByIdAsync(Guid id)
         {
             var baseResponse = new BaseResponse<NewsViewModel>();
 
@@ -88,44 +88,44 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<NewsViewModel>()
                 {
-                    Description = $"[GetNewsByIdAsync] : {ex.Message}",
+                    Description = $"[GetByIdAsync] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<IEnumerable<News>>> GetNewsByTagAsync(string tag)
-        {
-            var baseResponse = new BaseResponse<IEnumerable<News>>();
+        //public async Task<IBaseResponse<IEnumerable<News>>> GetNewsByTagAsync(string tag)
+        //{
+        //    var baseResponse = new BaseResponse<IEnumerable<News>>();
 
-            try
-            {
-                var news = await _newsRepository.GetAll().Where(x => x.Tags.Contains(tag)).ToListAsync();
+        //    try
+        //    {
+        //        var news = await _newsRepository.GetAll().Where(x => x.Tags.Contains(tag)).ToListAsync();
 
-                if (news == null)
-                {
-                    baseResponse.Description = "News not found";
-                    baseResponse.StatusCode = StatusCode.NotFound;
+        //        if (news == null)
+        //        {
+        //            baseResponse.Description = "News not found";
+        //            baseResponse.StatusCode = StatusCode.NotFound;
 
-                    return baseResponse;
-                }
+        //            return baseResponse;
+        //        }
 
-                baseResponse.Data = news;
-                baseResponse.StatusCode = StatusCode.OK;
+        //        baseResponse.Data = news;
+        //        baseResponse.StatusCode = StatusCode.OK;
 
-                return baseResponse;
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<IEnumerable<News>>()
-                {
-                    Description = $"[GetNewsByTagAsync] : {ex.Message}",
-                    StatusCode = StatusCode.InternalServerError
-                };
-            }
-        }
+        //        return baseResponse;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new BaseResponse<IEnumerable<News>>()
+        //        {
+        //            Description = $"[GetNewsByTagAsync] : {ex.Message}",
+        //            StatusCode = StatusCode.InternalServerError
+        //        };
+        //    }
+        //}
 
-        public async Task<IBaseResponse<bool>> DeleteNewsAsync(Guid id)
+        public async Task<IBaseResponse<bool>> DeleteAsync(Guid id)
         {
             var baseResponse = new BaseResponse<bool>();
 
@@ -152,13 +152,13 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<bool>()
                 {
-                    Description = $"[DeleteNewsAsync] : {ex.Message}",
+                    Description = $"[DeleteAsync] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<News>> CreateNewsAsync(NewsViewModel model)
+        public async Task<IBaseResponse<News>> CreateAsync(NewsViewModel model)
         {
             var baseResponse = new BaseResponse<News>();
 
@@ -184,13 +184,13 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<News>()
                 {
-                    Description = $"[CreateNewsAsync] : {ex.Message}",
+                    Description = $"[CreateAsync] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<News>> EditNewsAsync(Guid id, NewsViewModel model)
+        public async Task<IBaseResponse<News>> EditAsync(Guid id, NewsViewModel model)
         {
             var baseResponse = new BaseResponse<News>();
 
@@ -223,7 +223,7 @@ namespace PCGuide.Service.Implementations
             {
                 return new BaseResponse<News>()
                 {
-                    Description = $"[EditNewsAsync] : {ex.Message}",
+                    Description = $"[EditAsync] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }

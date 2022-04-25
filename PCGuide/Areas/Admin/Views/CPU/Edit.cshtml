@@ -1,0 +1,112 @@
+﻿@using PCGuide.Domain.Enum
+@model CPUViewModel
+
+@{
+    string strTitle = "Редактировать процессор";
+    ViewBag.Title = strTitle;
+    string imgSrc = "";
+    if (Model != null)
+    {
+        var base64 = Convert.ToBase64String(Model.ImageData);
+        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }
+}
+
+<div>
+    <h2>@ViewBag.Title</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="CPU" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <!--<input asp-for="Id" type="hidden" />-->
+
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Company"></label>
+                <input asp-for="Company" type="text" />
+                <span asp-validation-for="Company"></span>
+            </div>
+            <div>
+                <label asp-for="Series"></label>
+                <input asp-for="Series" type="text" />
+                <span asp-validation-for="Series"></span>
+            </div>
+            <div>
+                <label asp-for="Socket"></label>
+                <input asp-for="Socket" type="text" />
+                <span asp-validation-for="Socket"></span>
+            </div>
+            <div>
+                <label asp-for="TechnicalProcess"></label>
+                <input asp-for="TechnicalProcess" type="text" />
+                <span asp-validation-for="TechnicalProcess"></span>
+            </div>
+            <div>
+                <label asp-for="CoresCount"></label>
+                <input asp-for="CoresCount" type="text" />
+                <span asp-validation-for="CoresCount"></span>
+            </div>
+            <div>
+                <label asp-for="ThreadsCount"></label>
+                <input asp-for="ThreadsCount" type="text" />
+                <span asp-validation-for="ThreadsCount"></span>
+            </div>
+            <div>
+                <label asp-for="L1CacheCapacity"></label>
+                <input asp-for="L1CacheCapacity" type="text" />
+                <span asp-validation-for="L1CacheCapacity"></span>
+            </div>
+            <div>
+                <label asp-for="L2CachCapacity"></label>
+                <input asp-for="L2CachCapacity" type="text" />
+                <span asp-validation-for="L2CachCapacity"></span>
+            </div>
+            <div>
+                <label asp-for="HaveIntegratedGraphics"></label>
+                <input asp-for="HaveIntegratedGraphics" type="checkbox" />
+                <span asp-validation-for="HaveIntegratedGraphics"></span>
+            </div>
+            <div>
+                <label asp-for="IntegratedGraphics"></label>
+                <input asp-for="IntegratedGraphics" type="text" />
+                <span asp-validation-for="IntegratedGraphics"></span>
+            </div>
+            <div>
+                <label asp-for="ClockSpeed"></label>
+                <input asp-for="ClockSpeed" type="text" />
+                <span asp-validation-for="ClockSpeed"></span>
+            </div>
+            <div>
+                <label asp-for="BoostClockSpeed"></label>
+                <input asp-for="BoostClockSpeed" type="text" />
+                <span asp-validation-for="BoostClockSpeed"></span>
+            </div>
+            <div>
+                <label asp-for="TDP"></label>
+                <input asp-for="TDP" type="text" />
+                <span asp-validation-for="TDP"></span>
+            </div>
+            <div>
+                <label asp-for="RAMType"></label>
+                <select asp-for="RAMType" asp-items="@Html.GetEnumSelectList<MemoryType>()"></select>
+                <span asp-validation-for="RAMType"></span>
+            </div>
+            <div>
+                <label asp-for="RAMThreads"></label>
+                <input asp-for="RAMThreads" type="text" />
+                <span asp-validation-for="RAMThreads"></span>
+            </div>
+            <div>
+                <label asp-for="Image"></label>
+                <input asp-for="Image" type="file" />
+                <img src="@imgSrc" />
+                <span asp-validation-for="Image"></span>
+            </div>
+
+            <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+</div>

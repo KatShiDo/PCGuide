@@ -19,8 +19,22 @@ using PCGuide.Domain.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\Projects\github\PCGuide\PCGuide\Views\_ViewImports.cshtml"
+using PCGuide.Domain.Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\Projects\github\PCGuide\PCGuide\Views\_ViewImports.cshtml"
+using PCGuide.Service;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"711a6ae7dc9329149526373bc0042511853c58ed", @"/Views/Shared/_Layout.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cf3db37056644fe6eb0fe23fcf8160fccf3ade13", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b38234387764fe2a55244490fe5be3666a8b593a", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__Layout : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -51,7 +65,7 @@ using PCGuide.Domain.ViewModels;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "711a6ae7dc9329149526373bc0042511853c58ed3103", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "711a6ae7dc9329149526373bc0042511853c58ed3441", async() => {
                 WriteLiteral("\r\n    ");
 #nullable restore
 #line 4 "D:\Projects\github\PCGuide\PCGuide\Views\Shared\_Layout.cshtml"
@@ -81,7 +95,7 @@ Write(await Html.PartialAsync("CssPartial"));
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "711a6ae7dc9329149526373bc0042511853c58ed4540", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "711a6ae7dc9329149526373bc0042511853c58ed4878", async() => {
                 WriteLiteral("\r\n    ");
 #nullable restore
 #line 8 "D:\Projects\github\PCGuide\PCGuide\Views\Shared\_Layout.cshtml"

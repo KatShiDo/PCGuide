@@ -11,7 +11,7 @@
         <a asp-area="Admin" asp-controller="News" asp-action="Edit" asp-route-id="">Добавить новость</a>
     </div>
     <div>
-        @if (Model.Any())
+        @if (Model != null)
         {
             <div>
                 @foreach (News entity in Model)

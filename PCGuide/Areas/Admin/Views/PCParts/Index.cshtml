@@ -1,0 +1,24 @@
+﻿@{
+    string strTitle = "Панель администратора (редактировать данные о комплектующих)";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h1>@ViewBag.Title</h1>
+    <div>
+        <a asp-area="Admin" asp-controller="CPU" asp-action="Index">Процессоры</a><br />
+        <a asp-area="Admin" asp-controller="CPUCooler" asp-action="Index">Кулеры для процессоров</a><br />
+        <a asp-area="Admin" asp-controller="Frame" asp-action="Index">Корпусы</a><br />
+        <a asp-area="Admin" asp-controller="GPU" asp-action="Index">Видеокарты</a><br />
+        <a asp-area="Admin" asp-controller="HardDrive" asp-action="Index">Жёсткие диски</a><br />
+        <a asp-area="Admin" asp-controller="Motherboard" asp-action="Index">Материнские платы</a><br />
+        <a asp-area="Admin" asp-controller="PowerUnit" asp-action="Index">Блоки питания</a><br />
+        <a asp-area="Admin" asp-controller="RAM" asp-action="Index">Оперативная память</a><br />
+        <a asp-area="Admin" asp-controller="SSD" asp-action="Index">SSD</a><br />
+    </div>
+    <div>
+        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+            <input type="submit" value="Выйти" />
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CPU>
+
+@{
+    string strTitle = "Панель администратора (процессоры)";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h1>@ViewBag.Title</h1>
+    <div>
+        <a asp-area="Admin" asp-controller="CPU" asp-action="Edit" asp-route-id="">Добавить процессор</a>
+    </div>
+    <div>
+        @if (Model != null)
+        {
+            <div>
+                @foreach (CPU entity in Model)
+                {
+                    <div>
+                        <a asp-area="Admin" asp-controller="CPU" asp-action="Edit" asp-route-id="@entity.Id">редактировать</a>
+
+                        <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="CPU" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@entity.Id">
+                            <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">удалить</a>
+                        </form>
+
+                        <a asp-area="" asp-controller="CPU" asp-action="Index" asp-route-id="@entity.Id">
+                            @($"{entity.Name}")
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div>
+        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+            <input type="submit" value="Выйти" />
+        </form>
+    </div>
+</div>

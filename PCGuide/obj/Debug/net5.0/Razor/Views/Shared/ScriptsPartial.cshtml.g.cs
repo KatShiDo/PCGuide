@@ -19,8 +19,22 @@ using PCGuide.Domain.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\Projects\github\PCGuide\PCGuide\Views\_ViewImports.cshtml"
+using PCGuide.Domain.Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\Projects\github\PCGuide\PCGuide\Views\_ViewImports.cshtml"
+using PCGuide.Service;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"34828bedc4ccaf757a6f02e6b2c29a35940d0fce", @"/Views/Shared/ScriptsPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cf3db37056644fe6eb0fe23fcf8160fccf3ade13", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b38234387764fe2a55244490fe5be3666a8b593a", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_ScriptsPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -50,7 +64,7 @@ using PCGuide.Domain.ViewModels;
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "34828bedc4ccaf757a6f02e6b2c29a35940d0fce3296", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "34828bedc4ccaf757a6f02e6b2c29a35940d0fce3634", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

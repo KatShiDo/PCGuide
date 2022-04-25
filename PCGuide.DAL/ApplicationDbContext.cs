@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PCGuide.Domain.Entities;
-using PCGuide.Domain.Models;
 
 namespace PCGuide.DAL
 {
@@ -64,13 +63,6 @@ namespace PCGuide.DAL
 
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = new System.Guid("EBAA3373-F6AC-4EF8-A7EC-DAAB4F4FE3A9"),
-                CodeWord = "PageInfo",
-                Title = "Сведения"
-            });
-
-            builder.Entity<TextField>().HasData(new TextField
-            {
                 Id = new System.Guid("38157BF9-102B-421A-A206-80828157CCEC"),
                 CodeWord = "PageCatalog",
                 Title = "Каталог"
@@ -81,6 +73,13 @@ namespace PCGuide.DAL
                 Id = new System.Guid("69B8DE34-9245-49A1-B3A7-CAD861A2DD05"),
                 CodeWord = "PageNews",
                 Title = "Новости"
+            });
+
+            builder.Entity<TextField>().HasData(new TextField
+            {
+                Id = new System.Guid("EBAA3373-F6AC-4EF8-A7EC-DAAB4F4FE3A9"),
+                CodeWord = "PageFeedback",
+                Title = "Обратная связь"
             });
 
             builder.Entity<TextField>().HasData(new TextField

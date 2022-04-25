@@ -1,0 +1,24 @@
+﻿.pc_parts_block{
+    display: flex;
+    flex-direction: row;
+    height: 15rem;
+    width: 80%;
+    padding-bottom: 1rem;
+}
+
+.pc_parts_block img{
+    object-fit: cover;
+    width: 20%;
+}
+
+.pc_parts_desc{
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    justify-content: space-around;
+}
+
+.pc_parts_list{
+    display: flex;
+    flex-direction: column;
+}

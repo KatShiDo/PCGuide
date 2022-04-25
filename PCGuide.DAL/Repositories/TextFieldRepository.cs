@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace PCGuide.DAL.Repositories
 {
-    public class ITextFieldRepository : IBaseRepository<TextField>
+    public class TextFieldRepository : IBaseRepository<TextField>
     {
         private readonly ApplicationDbContext _context;
 
-        public ITextFieldRepository(ApplicationDbContext context)
+        public TextFieldRepository(ApplicationDbContext context)
         {
             _context = context;
         }

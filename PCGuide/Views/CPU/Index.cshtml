@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CPU>
+
+@if (Model != null)
+{
+    <div class="pc_parts_list">
+        @foreach (CPU CPU in Model)
+        {
+            <div class="pc_parts_block">
+                <img src="data:image;base64,@System.Convert.ToBase64String(CPU.Image)" alt=""/>
+                <div class="pc_parts_desc">
+                    <a asp-area="" asp-controller="CPU" asp-action="GetCPUById" asp-route-id="@CPU.Id">
+                        @CPU.Name
+                    </a>
+                    <div class="pc_parts_params">
+                        <p>Производитель: @CPU.Company</p>
+                        <p>Сокет: @CPU.Socket</p>
+                        <p>Количество ядер: @CPU.CoresCount</p>
+                        <p>Частота: @CPU.ClockSpeed</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -20,6 +20,13 @@ using PCGuide.Domain.ViewModels;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "D:\Projects\github\PCGuide\PCGuide\Views\_ViewImports.cshtml"
+using PCGuide.Domain.Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "D:\Projects\github\PCGuide\PCGuide\Views\Shared\MetatagsPartial.cshtml"
 using PCGuide.Service;
 
@@ -27,7 +34,7 @@ using PCGuide.Service;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"87f917f86a96b911dbf7b4cf13a66c062cbe41d7", @"/Views/Shared/MetatagsPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cf3db37056644fe6eb0fe23fcf8160fccf3ade13", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b38234387764fe2a55244490fe5be3666a8b593a", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_MetatagsPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable

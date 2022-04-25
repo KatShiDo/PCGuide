@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PCGuide.DAL.Interfaces;
-using PCGuide.Domain.Models;
+using PCGuide.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

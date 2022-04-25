@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PCGuide.Domain.Entities;
+using PCGuide.Domain.ViewModels;
+using PCGuide.Service.Interfaces;
+using System.Linq;
 
 namespace PCGuide.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IBaseService<TextField, TextFieldViewModel> _textFieldService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IBaseService<TextField, TextFieldViewModel> textFieldService)
         {
-            _logger = logger;
+            _textFieldService = textFieldService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_textFieldService.GetAll().Data.FirstOrDefault(x => x.CodeWord == "PageIndex"));
         }
     }
 }
