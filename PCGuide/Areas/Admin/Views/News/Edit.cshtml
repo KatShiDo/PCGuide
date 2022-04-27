@@ -3,25 +3,18 @@
 @{
     string strTitle = "Редактировать новость";
     ViewBag.Title = strTitle;
-    string imgSrc = "";
-    if (Model != null)
-    {
-        var base64 = Convert.ToBase64String(Model.ImageData);
-        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-    }
 }
 
 <div>
-    <h2>@ViewBag.Title</h2>
+    <h2>@strTitle</h2>
     <div>
         <form asp-area="Admin" asp-controller="News" asp-action="Edit" method="post" enctype="multipart/form-data">
-            <!--<input asp-for="Id" type="hidden" />-->
 
             <div asp-validation-summary="All"></div>
             <div>
-                <label asp-for="Name"></label>
-                <input asp-for="Name" type="text" />
-                <span asp-validation-for="Name"></span>
+                <label asp-for="Title"></label>
+                <input asp-for="Title" type="text" />
+                <span asp-validation-for="Title"></span>
             </div>
             <div>
                 <label asp-for="Description"></label>
@@ -36,7 +29,7 @@
             <div>
                 <label asp-for="Image"></label>
                 <input asp-for="Image" type="file" />
-                <img src="@imgSrc" />
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model?.ImageData ?? Array.Empty<byte>())" >
             </div>
 
             <input type="submit" value="Сохранить" />

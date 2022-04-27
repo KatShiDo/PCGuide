@@ -1,10 +1,5 @@
-﻿using PCGuide.Domain.Entities;
-using PCGuide.Domain.Enum;
+﻿using PCGuide.Domain.Enum;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PCGuide.Domain.Entities
 {
@@ -12,17 +7,19 @@ namespace PCGuide.Domain.Entities
     {
         public Guid Id { get; set; }
 
-        public byte[]? Image { get; set; }
+        public byte[] ImageData { get; set; }
 
         public DateTime DateCreate { get; set; }
 
         public string Name { get; set; }
 
-        public int Height { get; set; }
+        public Company Company { get; set; }
 
-        public int Width { get; set; }
+        public ushort Height { get; set; }
 
-        public int Lenght { get; set; }
+        public ushort Width { get; set; }
+
+        public ushort Lenght { get; set; }
 
         public MotherboardType MotherboardType { get; set; }
     }

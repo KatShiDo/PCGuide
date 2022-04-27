@@ -1,8 +1,6 @@
 ﻿using PCGuide.Domain.Response;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PCGuide.Service.Interfaces
@@ -13,10 +11,10 @@ namespace PCGuide.Service.Interfaces
 
         Task<IBaseResponse<TViewModel>> GetByIdAsync(Guid id);
 
-        Task<IBaseResponse<T>> CreateAsync(TViewModel model);
+        Task<IBaseResponse<T>> CreateAsync(TViewModel viewModel);
 
         Task<IBaseResponse<bool>> DeleteAsync(Guid id);
 
-        Task<IBaseResponse<T>> EditAsync(Guid id, TViewModel model);
+        Task<IBaseResponse<T>> EditAsync(TViewModel viewModel);
     }
 }

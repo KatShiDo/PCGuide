@@ -4,15 +4,13 @@ using PCGuide.Domain.ViewModels;
 using PCGuide.Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
 {
     public class MotherboardService : IBaseService<Motherboard, MotherboardViewModel>
     {
-        public Task<IBaseResponse<Motherboard>> CreateAsync(MotherboardViewModel model)
+        public Task<IBaseResponse<Motherboard>> CreateAsync(MotherboardViewModel viewModel)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +20,7 @@ namespace PCGuide.Service.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<IBaseResponse<Motherboard>> EditAsync(Guid id, MotherboardViewModel model)
+        public Task<IBaseResponse<Motherboard>> EditAsync(MotherboardViewModel viewModel)
         {
             throw new NotImplementedException();
         }

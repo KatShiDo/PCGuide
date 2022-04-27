@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using PCGuide.Domain.Entities;
 using PCGuide.Domain.ViewModels;
+using PCGuide.Service;
 using PCGuide.Service.Interfaces;
 using System.Linq;
 
@@ -18,7 +18,7 @@ namespace PCGuide.Controllers
 
         public IActionResult Index()
         {
-            return View(_textFieldService.GetAll().Data.FirstOrDefault(x => x.CodeWord == "PageIndex"));
+            return View(_textFieldService.GetAll().Data.FirstOrDefault(x => x.CodeWord == "PageIndex").ToViewModel());
         }
     }
 }

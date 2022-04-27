@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CPU>
+﻿@model IEnumerable<CPUViewModel>
 
 @{
     string strTitle = "Панель администратора (процессоры)";
@@ -6,15 +6,15 @@
 }
 
 <div>
-    <h1>@ViewBag.Title</h1>
+    <h1>@strTitle</h1>
     <div>
         <a asp-area="Admin" asp-controller="CPU" asp-action="Edit" asp-route-id="">Добавить процессор</a>
     </div>
     <div>
-        @if (Model != null)
+        @if (Model.Any())
         {
             <div>
-                @foreach (CPU entity in Model)
+                @foreach (CPUViewModel entity in Model)
                 {
                     <div>
                         <a asp-area="Admin" asp-controller="CPU" asp-action="Edit" asp-route-id="@entity.Id">редактировать</a>

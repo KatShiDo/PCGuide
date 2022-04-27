@@ -4,15 +4,13 @@ using PCGuide.Domain.ViewModels;
 using PCGuide.Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
 {
     public class SSDService : IBaseService<SSD, SSDViewModel>
     {
-        public Task<IBaseResponse<SSD>> CreateAsync(SSDViewModel model)
+        public Task<IBaseResponse<SSD>> CreateAsync(SSDViewModel viewModel)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +20,7 @@ namespace PCGuide.Service.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<IBaseResponse<SSD>> EditAsync(Guid id, SSDViewModel model)
+        public Task<IBaseResponse<SSD>> EditAsync(SSDViewModel viewModel)
         {
             throw new NotImplementedException();
         }

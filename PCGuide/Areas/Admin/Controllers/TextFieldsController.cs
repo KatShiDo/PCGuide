@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PCGuide.Domain.Entities;
 using PCGuide.Domain.ViewModels;
+using PCGuide.Service;
 using PCGuide.Service.Interfaces;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PCGuide.Areas.Admin.Controllers
@@ -19,13 +21,19 @@ namespace PCGuide.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(_textFieldService.GetAll().Data);
+            return View(_textFieldService.GetAll().Data.Select(x => x.ToViewModel()));
         }
 
         public async Task<IActionResult> Edit(Guid id)
         {
-            var entity = await _textFieldService.GetByIdAsync(id);
-            return View(entity.Data);
+            var response = await _textFieldService.GetByIdAsync(id);
+
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Data);
+            }
+
+            return View("Error", $"{response.Description}");
         }
 
         [HttpPost]
@@ -33,8 +41,8 @@ namespace PCGuide.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _textFieldService.EditAsync(model.Id, model);
-                return RedirectToAction("Index", "Home");
+                await _textFieldService.EditAsync(model);
+                return RedirectToAction("Index");
             }
 
             return View(model);

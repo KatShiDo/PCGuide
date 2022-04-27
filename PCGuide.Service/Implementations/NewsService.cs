@@ -8,7 +8,6 @@ using PCGuide.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
@@ -24,30 +23,31 @@ namespace PCGuide.Service.Implementations
 
         public IBaseResponse<IEnumerable<News>> GetAll()
         {
-            var baseResponse = new BaseResponse<IEnumerable<News>>();
-
             try
             {
                 var news = _newsRepository.GetAll();
 
                 if (!news.Any())
                 {
-                    baseResponse.Description = "Found 0 elements";
-                    baseResponse.StatusCode = StatusCode.OK;
-
-                    return baseResponse;
+                    return new BaseResponse<IEnumerable<News>>
+                    {
+                        Description = "Found 0 elements",
+                        StatusCode = StatusCode.OK,
+                        Data = news
+                    };
                 }
 
-                baseResponse.Data = news;
-                baseResponse.StatusCode = StatusCode.OK;
-
-                return baseResponse;
+                return new BaseResponse<IEnumerable<News>>
+                {
+                    Data = news,
+                    StatusCode = StatusCode.OK
+                };
             }
             catch (Exception ex)
             {
-                return new BaseResponse<IEnumerable<News>>()
+                return new BaseResponse<IEnumerable<News>>
                 {
-                    Description = $"[GetAll] : {ex.Message}",
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
@@ -55,175 +55,122 @@ namespace PCGuide.Service.Implementations
 
         public async Task<IBaseResponse<NewsViewModel>> GetByIdAsync(Guid id)
         {
-            var baseResponse = new BaseResponse<NewsViewModel>();
-
             try
             {
                 var news = await _newsRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
 
                 if (news == null)
                 {
-                    baseResponse.Description = "News not found";
-                    baseResponse.StatusCode = StatusCode.NotFound;
-
-                    return baseResponse;
+                    return new BaseResponse<NewsViewModel>
+                    {
+                        Description = "News not found",
+                        StatusCode = StatusCode.NotFound
+                    };
                 }
 
-                var data = new NewsViewModel()
+                return new BaseResponse<NewsViewModel>
                 {
-                    DateCreate = news.DateCreate,
-                    Name = news.Name,
-                    Description = news.Description,
-                    Tags = news.Tags.Split(" ").ToList(),
-                    TagsString = news.Tags,
-                    ImageData = news.Image
+                    Data = news.ToViewModel(),
+                    StatusCode = StatusCode.OK
                 };
-
-                baseResponse.Data = data;
-                baseResponse.StatusCode = StatusCode.OK;
-
-                return baseResponse;
             }
             catch (Exception ex)
             {
-                return new BaseResponse<NewsViewModel>()
+                return new BaseResponse<NewsViewModel>
                 {
-                    Description = $"[GetByIdAsync] : {ex.Message}",
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
-
-        //public async Task<IBaseResponse<IEnumerable<News>>> GetNewsByTagAsync(string tag)
-        //{
-        //    var baseResponse = new BaseResponse<IEnumerable<News>>();
-
-        //    try
-        //    {
-        //        var news = await _newsRepository.GetAll().Where(x => x.Tags.Contains(tag)).ToListAsync();
-
-        //        if (news == null)
-        //        {
-        //            baseResponse.Description = "News not found";
-        //            baseResponse.StatusCode = StatusCode.NotFound;
-
-        //            return baseResponse;
-        //        }
-
-        //        baseResponse.Data = news;
-        //        baseResponse.StatusCode = StatusCode.OK;
-
-        //        return baseResponse;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return new BaseResponse<IEnumerable<News>>()
-        //        {
-        //            Description = $"[GetNewsByTagAsync] : {ex.Message}",
-        //            StatusCode = StatusCode.InternalServerError
-        //        };
-        //    }
-        //}
 
         public async Task<IBaseResponse<bool>> DeleteAsync(Guid id)
         {
-            var baseResponse = new BaseResponse<bool>();
-
             try
             {
                 var news = await _newsRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
 
                 if (news == null)
                 {
-                    baseResponse.Description = "News not found";
-                    baseResponse.StatusCode = StatusCode.NotFound;
-                    baseResponse.Data = false;
-
-                    return baseResponse;
+                    return new BaseResponse<bool>
+                    {
+                        Description = "News not found",
+                        StatusCode = StatusCode.NotFound,
+                        Data = false
+                    };
                 }
 
                 await _newsRepository.DeleteAsync(news);
-                baseResponse.StatusCode = StatusCode.OK;
-                baseResponse.Data = true;
 
-                return baseResponse;
+                return new BaseResponse<bool>
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = true
+                };
             }
             catch (Exception ex)
             {
-                return new BaseResponse<bool>()
+                return new BaseResponse<bool>
                 {
-                    Description = $"[DeleteAsync] : {ex.Message}",
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<News>> CreateAsync(NewsViewModel model)
+        public async Task<IBaseResponse<News>> CreateAsync(NewsViewModel viewModel)
         {
-            var baseResponse = new BaseResponse<News>();
-
             try
             {
-                var news = new News()
-                {
-                    Id = model.Id,
-                    DateCreate = DateTime.Now,
-                    Image = model.ImageData,
-                    Name = model.Name,
-                    Description = model.Description,
-                    Tags = model.TagsString
-                };
-
+                var news = viewModel.ToModel();
                 await _newsRepository.CreateAsync(news);
-                baseResponse.StatusCode = StatusCode.OK;
-                baseResponse.Data = news;
 
-                return baseResponse;
+                return new BaseResponse<News>
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = news
+                };
             }
             catch (Exception ex)
             {
-                return new BaseResponse<News>()
+                return new BaseResponse<News>
                 {
-                    Description = $"[CreateAsync] : {ex.Message}",
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<News>> EditAsync(Guid id, NewsViewModel model)
+        public async Task<IBaseResponse<News>> EditAsync(NewsViewModel viewModel)
         {
-            var baseResponse = new BaseResponse<News>();
-
             try
             {
-                var news = await _newsRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                var news = await _newsRepository.GetAll().FirstOrDefaultAsync(x => x.Id == viewModel.Id);
 
                 if (news == null)
                 {
-                    baseResponse.Description = "News not found";
-                    baseResponse.StatusCode = StatusCode.NotFound;
-
-                    return baseResponse;
+                    return new BaseResponse<News>
+                    {
+                        Description = "News not found",
+                        StatusCode = StatusCode.NotFound
+                    };
                 }
 
-                news.Description = model.Description;
-                news.Name = model.Name;
-                news.Tags = model.TagsString;
-                news.DateCreate = model.DateCreate;
-                news.Image = model.ImageData;
+                news = viewModel.ToModel();
 
                 await _newsRepository.UpdateAsync(news);
 
-                baseResponse.Data = news;
-                baseResponse.StatusCode = StatusCode.OK;
-
-                return baseResponse;
+                return new BaseResponse<News>
+                {
+                    Data = news,
+                    StatusCode = StatusCode.OK
+                };
             }
             catch (Exception ex)
             {
-                return new BaseResponse<News>()
+                return new BaseResponse<News>
                 {
-                    Description = $"[EditAsync] : {ex.Message}",
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }

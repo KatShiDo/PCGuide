@@ -1,22 +1,14 @@
-﻿@using PCGuide.Domain.Enum
-@model CPUViewModel
+﻿@model CPUViewModel
 
 @{
     string strTitle = "Редактировать процессор";
     ViewBag.Title = strTitle;
-    string imgSrc = "";
-    if (Model != null)
-    {
-        var base64 = Convert.ToBase64String(Model.ImageData);
-        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-    }
 }
 
 <div>
     <h2>@ViewBag.Title</h2>
     <div>
         <form asp-area="Admin" asp-controller="CPU" asp-action="Edit" method="post" enctype="multipart/form-data">
-            <!--<input asp-for="Id" type="hidden" />-->
 
             <div asp-validation-summary="All"></div>
             <div>
@@ -26,23 +18,19 @@
             </div>
             <div>
                 <label asp-for="Company"></label>
-                <input asp-for="Company" type="text" />
-                <span asp-validation-for="Company"></span>
+                <select asp-for="Company" asp-items="@Html.GetEnumSelectList<Company>()"></select>
             </div>
             <div>
                 <label asp-for="Series"></label>
-                <input asp-for="Series" type="text" />
-                <span asp-validation-for="Series"></span>
+                <select asp-for="Series" asp-items="@Html.GetEnumSelectList<Series>()"></select>
             </div>
             <div>
                 <label asp-for="Socket"></label>
-                <input asp-for="Socket" type="text" />
-                <span asp-validation-for="Socket"></span>
+                <select asp-for="Socket" asp-items="@Html.GetEnumSelectList<Socket>()"></select>
             </div>
             <div>
                 <label asp-for="TechnicalProcess"></label>
-                <input asp-for="TechnicalProcess" type="text" />
-                <span asp-validation-for="TechnicalProcess"></span>
+                <select asp-for="TechnicalProcess" asp-items="@Html.GetEnumSelectList<TechnicalProcess>()"></select>
             </div>
             <div>
                 <label asp-for="CoresCount"></label>
@@ -55,14 +43,9 @@
                 <span asp-validation-for="ThreadsCount"></span>
             </div>
             <div>
-                <label asp-for="L1CacheCapacity"></label>
-                <input asp-for="L1CacheCapacity" type="text" />
-                <span asp-validation-for="L1CacheCapacity"></span>
-            </div>
-            <div>
-                <label asp-for="L2CachCapacity"></label>
-                <input asp-for="L2CachCapacity" type="text" />
-                <span asp-validation-for="L2CachCapacity"></span>
+                <label asp-for="CacheCapacity"></label>
+                <input asp-for="CacheCapacity" type="text" />
+                <span asp-validation-for="CacheCapacity"></span>
             </div>
             <div>
                 <label asp-for="HaveIntegratedGraphics"></label>
@@ -71,8 +54,7 @@
             </div>
             <div>
                 <label asp-for="IntegratedGraphics"></label>
-                <input asp-for="IntegratedGraphics" type="text" />
-                <span asp-validation-for="IntegratedGraphics"></span>
+                <select asp-for="IntegratedGraphics" asp-items="@Html.GetEnumSelectList<IntegratedGraphics>()"></select>
             </div>
             <div>
                 <label asp-for="ClockSpeed"></label>
@@ -82,7 +64,6 @@
             <div>
                 <label asp-for="BoostClockSpeed"></label>
                 <input asp-for="BoostClockSpeed" type="text" />
-                <span asp-validation-for="BoostClockSpeed"></span>
             </div>
             <div>
                 <label asp-for="TDP"></label>
@@ -92,7 +73,6 @@
             <div>
                 <label asp-for="RAMType"></label>
                 <select asp-for="RAMType" asp-items="@Html.GetEnumSelectList<MemoryType>()"></select>
-                <span asp-validation-for="RAMType"></span>
             </div>
             <div>
                 <label asp-for="RAMThreads"></label>
@@ -102,8 +82,7 @@
             <div>
                 <label asp-for="Image"></label>
                 <input asp-for="Image" type="file" />
-                <img src="@imgSrc" />
-                <span asp-validation-for="Image"></span>
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model?.ImageData ?? Array.Empty<byte>())" >
             </div>
 
             <input type="submit" value="Сохранить" />

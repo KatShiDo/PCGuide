@@ -4,15 +4,13 @@ using PCGuide.Domain.ViewModels;
 using PCGuide.Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
 {
     public class PowerUnitService : IBaseService<PowerUnit, PowerUnitViewModel>
     {
-        public Task<IBaseResponse<PowerUnit>> CreateAsync(PowerUnitViewModel model)
+        public Task<IBaseResponse<PowerUnit>> CreateAsync(PowerUnitViewModel viewModel)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +20,7 @@ namespace PCGuide.Service.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<IBaseResponse<PowerUnit>> EditAsync(Guid id, PowerUnitViewModel model)
+        public Task<IBaseResponse<PowerUnit>> EditAsync(PowerUnitViewModel viewModel)
         {
             throw new NotImplementedException();
         }

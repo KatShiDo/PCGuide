@@ -1,23 +1,30 @@
-﻿@model IEnumerable<News>
+﻿@model IEnumerable<NewsViewModel>
+
+@{
+    TextField textField = ViewBag.TextField;
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
+}
 
 <div>
-    @Html.Raw(ViewBag.Text)
+    @Html.Raw(textField.Text)
 </div>
 
-@if (Model != null)
+@if (Model.Any())
 {
-    @foreach (News news in Model)
+    @foreach (NewsViewModel news in Model)
     {
         <div class="blog-container">
             <div class="blog-header">
                 <div class="blog-cover">
-                    <img src="data:image;base64,@System.Convert.ToBase64String(news.Image)" alt=""/>
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(news?.ImageData ?? Array.Empty<byte>())" >
                 </div>
             </div>
             <div class="blog-body">
                 <div class="blog-title">
                     <h1>
-                        <a asp-area="" asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">@news.Name</a>
+                        <a asp-area="" asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">@news.Title</a>
                     </h1>
                 </div>
                 <div class="blog-text">
@@ -25,7 +32,7 @@
                 </div>
                 <div class="blog-tags">
                     <ul>
-                        @foreach (string tag in news.Tags.Split(" ").ToList())
+                        @foreach (string tag in news.Tags)
                         {
                             <li>
                                 <a asp-area="" asp-controller="News" asp-action="GetNewsByTag" asp-route-tag="@tag">@tag</a>
@@ -41,5 +48,4 @@
             </div>
         </div>
     }
-
 }

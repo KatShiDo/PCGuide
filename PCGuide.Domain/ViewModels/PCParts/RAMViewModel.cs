@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PCGuide.Domain.ViewModels
 {
@@ -13,26 +9,33 @@ namespace PCGuide.Domain.ViewModels
         public Guid Id { get; set; }
 
         [Display(Name = "Картинка")]
-        [Required(ErrorMessage = "Загрузите картинку")]
+        //[Required(ErrorMessage = "Загрузите картинку")]
         public IFormFile Image { get; set; }
 
-        public byte[]? ImageData { get; set; }
+        public byte[] ImageData { get; set; }
 
         public DateTime DateCreate { get; set; }
 
         [Display(Name = "Название")]
+        [Required(ErrorMessage = "Введите название")]
         public string Name { get; set; }
+
+        [Display(Name = "Производитель")]
+        public string Company { get; set; }
 
         [Display(Name = "Тип оперативной памяти")]
         public string MemoryType { get; set; }
 
         [Display(Name = "Частота")]
-        public int ClockSpeed { get; set; }
+        [Required(ErrorMessage = "Введите частоту")]
+        public uint ClockSpeed { get; set; }
 
-        [Display(Name = "Задержки")]
-        public string Delays { get; set; }
+        [Display(Name = "Задержка")]
+        [Required(ErrorMessage = "Введите задержку")]
+        public ushort Delay { get; set; }
 
         [Display(Name = "Размер памяти")]
-        public int Memory { get; set; }
+        [Required(ErrorMessage = "Введите размер памяти")]
+        public ushort MemoryCapacity { get; set; }
     }
 }

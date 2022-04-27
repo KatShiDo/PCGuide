@@ -4,15 +4,13 @@ using PCGuide.Domain.ViewModels;
 using PCGuide.Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
 {
     public class HardDriveService : IBaseService<HardDrive, HardDriveViewModel>
     {
-        public Task<IBaseResponse<HardDrive>> CreateAsync(HardDriveViewModel model)
+        public Task<IBaseResponse<HardDrive>> CreateAsync(HardDriveViewModel viewModel)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +20,7 @@ namespace PCGuide.Service.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<IBaseResponse<HardDrive>> EditAsync(Guid id, HardDriveViewModel model)
+        public Task<IBaseResponse<HardDrive>> EditAsync(HardDriveViewModel viewModel)
         {
             throw new NotImplementedException();
         }

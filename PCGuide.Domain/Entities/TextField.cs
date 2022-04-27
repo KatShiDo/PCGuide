@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PCGuide.Domain.Entities
 {
@@ -16,5 +11,11 @@ namespace PCGuide.Domain.Entities
         public string Title { get; set; } = "Информационная страница";
 
         public string Text { get; set; } = "Содержание заполняется администратором";
+
+        public string MetaTitle { get; set; }
+
+        public string MetaDescription { get; set; }
+
+        public string MetaKeywords { get; set; }
     }
 }

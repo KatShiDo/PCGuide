@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PCGuide.Domain.Entities;
 using PCGuide.Domain.ViewModels;
+using PCGuide.Service;
 using PCGuide.Service.Interfaces;
+using System.Linq;
 
 namespace PCGuide.Controllers
 {
@@ -16,7 +18,7 @@ namespace PCGuide.Controllers
 
         public IActionResult Index()
         {
-            return View(_CPUService.GetAll().Data);
+            return View(_CPUService.GetAll().Data.Select(x => x.ToViewModel()));
         }
     }
 }

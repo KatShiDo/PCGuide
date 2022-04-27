@@ -49,7 +49,7 @@ namespace PCGuide.Migrations
                         new
                         {
                             Id = "F113EC5E-FC39-41CD-8CD7-046E521C9A4C",
-                            ConcurrencyStamp = "4ae99cd0-5a63-4ff8-a9cd-1440fb3a630e",
+                            ConcurrencyStamp = "d7276dc1-7fcd-4379-8739-13f3090062f6",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +148,13 @@ namespace PCGuide.Migrations
                         {
                             Id = "F83A39C9-6960-4934-8CDC-88D0AAB64AAF",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "524a7d9b-408e-467f-aec3-2980b46bca70",
+                            ConcurrencyStamp = "b5089fb7-2e5f-43fb-9df6-d98ab2683f47",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGsbXKz6gwBB1ldglOFfrzEF/8s0RNWZvn1F2EOqA2e+qm7+BDUDBUGlx8C7KlLGIA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJK0XrF75ruKCI58GpFWB9Qgm2EW6tLu5f1/BAQN87pn5Br7671LrKBMljAX4o1VVA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -249,6 +249,356 @@ namespace PCGuide.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("PCGuide.Domain.Entities.CPU", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("BoostClockSpeed")
+                        .HasColumnType("real");
+
+                    b.Property<int>("CacheCapacity")
+                        .HasColumnType("int");
+
+                    b.Property<float>("ClockSpeed")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CoresCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("HaveIntegratedGraphics")
+                        .HasColumnType("bit");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("IntegratedGraphics")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RAMThreads")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RAMType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Series")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Socket")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TDP")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TechnicalProcess")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThreadsCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CPUs");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.CPUCooler", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TDP")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CPUCoolers");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.Frame", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("Lenght")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MotherboardType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Width")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Frames");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.GPU", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("ClockSpeed")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MemoryCapacity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MemoryType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TDP")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TechnicalProcess")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GPUs");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.HardDrive", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("MemoryCapacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RPM")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HardDrives");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.Motherboard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Chipset")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("MemoryType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MotherboardType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Socket")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Motherboards");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.News", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("TagsString")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("News");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.PowerUnit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PowerUnits");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.RAM", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<long>("ClockSpeed")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Delay")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("MemoryCapacity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MemoryType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RAM");
+                });
+
+            modelBuilder.Entity("PCGuide.Domain.Entities.SSD", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Company")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("MemoryCapacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ReadSpeed")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("WriteSpeed")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SSDs");
+                });
+
             modelBuilder.Entity("PCGuide.Domain.Entities.TextField", b =>
                 {
                     b.Property<Guid>("Id")
@@ -256,6 +606,15 @@ namespace PCGuide.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CodeWord")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaKeywords")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Text")
@@ -278,13 +637,6 @@ namespace PCGuide.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ebaa3373-f6ac-4ef8-a7ec-daab4f4fe3a9"),
-                            CodeWord = "PageInfo",
-                            Text = "Содержание заполняется администратором",
-                            Title = "Сведения"
-                        },
-                        new
-                        {
                             Id = new Guid("38157bf9-102b-421a-a206-80828157ccec"),
                             CodeWord = "PageCatalog",
                             Text = "Содержание заполняется администратором",
@@ -299,340 +651,18 @@ namespace PCGuide.Migrations
                         },
                         new
                         {
+                            Id = new Guid("ebaa3373-f6ac-4ef8-a7ec-daab4f4fe3a9"),
+                            CodeWord = "PageFeedback",
+                            Text = "Содержание заполняется администратором",
+                            Title = "Обратная связь"
+                        },
+                        new
+                        {
                             Id = new Guid("62b29dc5-9279-432b-b0f5-004042b5edcc"),
                             CodeWord = "PageCompany",
                             Text = "Содержание заполняется администратором",
                             Title = "О компании"
                         });
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.CPU", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<double?>("BoostClockSpeed")
-                        .HasColumnType("float");
-
-                    b.Property<double>("ClockSpeed")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Company")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CoresCount")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("HaveIntegratedGraphics")
-                        .HasColumnType("bit");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("IntegratedGraphics")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("L1CacheCapacity")
-                        .HasColumnType("float");
-
-                    b.Property<double>("L2CachCapacity")
-                        .HasColumnType("float");
-
-                    b.Property<double>("L3CacheCapacity")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RAMThreads")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RAMType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Series")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Socket")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TDP")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TechnicalProcess")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ThreadsCount")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CPUs");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.CPUCooler", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Height")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TDP")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CPUCoolers");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.Frame", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Height")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("Lenght")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MotherboardType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Width")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Frames");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.GPU", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("ClockSpeed")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("Memory")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MemoryType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TDP")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TechnicalProcess")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GPUs");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.HardDrive", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("Memory")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RPM")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HardDrives");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.Motherboard", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Chipset")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("MemoryType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MotherboardType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Socket")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Motherboards");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.News", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tags")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("News");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.PowerUnit", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Power")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PowerUnits");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.RAM", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("ClockSpeed")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Delays")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("Memory")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MemoryType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RAM");
-                });
-
-            modelBuilder.Entity("PCGuide.Domain.Models.SSD", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("Memory")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ReadSpeed")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WriteSpeed")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SSDs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

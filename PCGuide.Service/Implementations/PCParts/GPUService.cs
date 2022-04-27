@@ -4,15 +4,13 @@ using PCGuide.Domain.ViewModels;
 using PCGuide.Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PCGuide.Service.Implementations
 {
     public class GPUService : IBaseService<GPU, GPUViewModel>
     {
-        public Task<IBaseResponse<GPU>> CreateAsync(GPUViewModel model)
+        public Task<IBaseResponse<GPU>> CreateAsync(GPUViewModel viewModel)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +20,7 @@ namespace PCGuide.Service.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<IBaseResponse<GPU>> EditAsync(Guid id, GPUViewModel model)
+        public Task<IBaseResponse<GPU>> EditAsync(GPUViewModel viewModel)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<News>
+﻿@model IEnumerable<NewsViewModel>
 
 @{
     string strTitle = "Панель администратора (редактирование новостей)";
@@ -6,15 +6,15 @@
 }
 
 <div>
-    <h1>@ViewBag.Title</h1>
+    <h1>@strTitle</h1>
     <div>
         <a asp-area="Admin" asp-controller="News" asp-action="Edit" asp-route-id="">Добавить новость</a>
     </div>
     <div>
-        @if (Model != null)
+        @if (Model.Any())
         {
             <div>
-                @foreach (News entity in Model)
+                @foreach (NewsViewModel entity in Model)
                 {
                     <div>
                         <a asp-area="Admin" asp-controller="News" asp-action="Edit" asp-route-id="@entity.Id">редактировать</a>
@@ -25,7 +25,7 @@
                         </form>
 
                         <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
-                            @($"{entity.Name}")
+                            @($"{entity.Title}")
                         </a>
                     </div>
                 }

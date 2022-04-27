@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PCGuide.Domain.Entities;
 using PCGuide.Domain.ViewModels;
+using PCGuide.Service;
 using PCGuide.Service.Interfaces;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PCGuide.Areas.Admin.Controllers
@@ -20,7 +22,7 @@ namespace PCGuide.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(_CPUService.GetAll().Data);
+            return View(_CPUService.GetAll().Data.Select(x => x.ToViewModel()));
         }
 
         public async Task<IActionResult> Edit(Guid id)
@@ -47,11 +49,14 @@ namespace PCGuide.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                using (var binaryReader = new BinaryReader(model.Image.OpenReadStream()))
+                if (model.Image != null)
                 {
-                    model.ImageData = binaryReader.ReadBytes((int)model.Image.Length);
+                    using (var binaryReader = new BinaryReader(model.Image.OpenReadStream()))
+                    {
+                        model.ImageData = binaryReader.ReadBytes((int)model.Image.Length);
+                    }
                 }
-
+                
                 model.DateCreate = DateTime.Now;
 
                 if (model.Id == default)
@@ -60,13 +65,13 @@ namespace PCGuide.Areas.Admin.Controllers
                 }
                 else
                 {
-                    await _CPUService.EditAsync(model.Id, model);
+                    await _CPUService.EditAsync(model);
                 }
 
                 return RedirectToAction("Index");
             }
 
-            return View();
+            return View(model);
         }
 
         [HttpPost]

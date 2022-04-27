@@ -1,12 +1,16 @@
-﻿@model IEnumerable<CPU>
+﻿@model IEnumerable<CPUViewModel>
+
+@{
+    ViewBag.Title = "Процессоры";
+}
 
 @if (Model != null)
 {
     <div class="pc_parts_list">
-        @foreach (CPU CPU in Model)
+        @foreach (CPUViewModel CPU in Model)
         {
             <div class="pc_parts_block">
-                <img src="data:image;base64,@System.Convert.ToBase64String(CPU.Image)" alt=""/>
+                <img src="data:image;base64,@System.Convert.ToBase64String(CPU.ImageData)" alt=""/>
                 <div class="pc_parts_desc">
                     <a asp-area="" asp-controller="CPU" asp-action="GetCPUById" asp-route-id="@CPU.Id">
                         @CPU.Name

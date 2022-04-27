@@ -1,7 +1,12 @@
 ﻿@model LoginViewModel
 
+@{
+    var strTitle = "Вход в аккаунт";
+    ViewBag.Title = strTitle;
+}
+
 <div>
-    <h1>Вход в аккаунт</h1>
+    <h1>@strTitle</h1>
     <div>
         <form asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.ReturnUrl">
             <div asp-validation-summary="All"></div>

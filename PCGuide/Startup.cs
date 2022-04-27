@@ -1,16 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PCGuide.DAL;
-using PCGuide.DAL.Interfaces;
-using PCGuide.DAL.Repositories;
 using PCGuide.Service;
-using PCGuide.Service.Implementations;
-using PCGuide.Service.Interfaces;
 
 namespace PCGuide
 {
@@ -56,7 +53,7 @@ namespace PCGuide
             services.AddControllersWithViews(x =>
             {
                 x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
-            });
+            }).SetCompatibilityVersion(CompatibilityVersion.Latest).AddSessionStateTempDataProvider();
 
             services.InitializeRepositories();
             services.InitializeServices();

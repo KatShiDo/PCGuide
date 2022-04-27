@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PCGuide.Domain.ViewModels
 {
@@ -13,14 +9,15 @@ namespace PCGuide.Domain.ViewModels
         public Guid Id { get; set; }
 
         [Display(Name = "Картинка")]
-        [Required(ErrorMessage = "Загрузите картинку")]
+        //[Required(ErrorMessage = "Загрузите картинку")]
         public IFormFile Image { get; set; }
 
-        public byte[]? ImageData { get; set; }
+        public byte[] ImageData { get; set; }
 
         public DateTime DateCreate { get; set; }
 
         [Display(Name = "Название")]
+        [Required(ErrorMessage = "Введите название")]
         public string Name { get; set; }
 
         [Display(Name = "Производитель")]
@@ -36,19 +33,16 @@ namespace PCGuide.Domain.ViewModels
         public string TechnicalProcess { get; set; }
 
         [Display(Name = "Количество ядер")]
-        public int CoresCount { get; set; }
+        [Required(ErrorMessage = "Введите количество ядер")]
+        public ushort CoresCount { get; set; }
 
         [Display(Name = "Количество потоков")]
-        public int ThreadsCount { get; set; }
+        [Required(ErrorMessage = "Введите количество потоков")]
+        public ushort ThreadsCount { get; set; }
 
-        [Display(Name = "Кэш L1")]
-        public double L1CacheCapacity { get; set; }
-
-        [Display(Name = "Кеш L2")]
-        public double L2CachCapacity { get; set; }
-
-        [Display(Name = "Кеш L3")]
-        public double L3CacheCapacity { get; set; }
+        [Display(Name = "Кэш")]
+        [Required(ErrorMessage = "Введите кэш")]
+        public ushort CacheCapacity { get; set; }
 
         [Display(Name = "Наличие интегрированного видеоядра")]
         public bool HaveIntegratedGraphics { get; set; }
@@ -57,19 +51,21 @@ namespace PCGuide.Domain.ViewModels
         public string IntegratedGraphics { get; set; }
 
         [Display(Name = "Частота ядра")]
-        public double ClockSpeed { get; set; }
+        [Required(ErrorMessage = "Введите частоту")]
+        public float ClockSpeed { get; set; }
 
         [Display(Name = "Частота в бусте")]
-        public double? BoostClockSpeed { get; set; }
+        public float BoostClockSpeed { get; set; }
 
         [Display(Name = "TDP")]
-        public int TDP { get; set; }
+        [Required(ErrorMessage = "Введите TDP")]
+        public ushort TDP { get; set; }
 
         [Display(Name = "Оперативная память")]
-        [Required(ErrorMessage = "Выберите тип")]
         public string RAMType { get; set; }
 
         [Display(Name = "Количество потоков оперативной памяти")]
-        public int RAMThreads { get; set; }
+        [Required(ErrorMessage = "Введите количество потоков оперативной памяти")]
+        public ushort RAMThreads { get; set; }
     }
 }

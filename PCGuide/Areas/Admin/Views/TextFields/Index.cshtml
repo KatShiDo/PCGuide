@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TextField>
+﻿@model IEnumerable<TextFieldViewModel>
 
 @{
     string strTitle = "Панель администратора (редактирование страниц сайта)";
@@ -11,7 +11,7 @@
         @if (Model.Any())
         {
             <div>
-                @foreach (TextField entity in Model)
+                @foreach (TextFieldViewModel entity in Model)
                 {
                     <div>
                         <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-id="@entity.Id">редактировать</a>

@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PCGuide.Domain.ViewModels
 {
@@ -13,18 +9,23 @@ namespace PCGuide.Domain.ViewModels
         public Guid Id { get; set; }
 
         [Display(Name = "Картинка")]
-        [Required(ErrorMessage = "Загрузите картинку")]
+        //[Required(ErrorMessage = "Загрузите картинку")]
         public IFormFile Image { get; set; }
 
-        public byte[]? ImageData { get; set; }
+        public byte[] ImageData { get; set; }
 
         public DateTime DateCreate { get; set; }
 
         [Display(Name = "Название")]
+        [Required(ErrorMessage = "Введите название")]
         public string Name { get; set; }
 
+        [Display(Name = "Производитель")]
+        public string Company { get; set; }
+
         [Display(Name = "Размер видеопамяти")]
-        public int Memory { get; set; }
+        [Required(ErrorMessage = "Введите размер видеопамяти")]
+        public ushort MemoryCapacity { get; set; }
 
         [Display(Name = "Тип видеопамяти")]
         public string MemoryType { get; set; }
@@ -33,9 +34,15 @@ namespace PCGuide.Domain.ViewModels
         public string TechnicalProcess { get; set; }
 
         [Display(Name = "Частота ядра")]
-        public int ClockSpeed { get; set; }
+        [Required(ErrorMessage = "Введите частоту")]
+        public float ClockSpeed { get; set; }
 
         [Display(Name = "TDP")]
-        public int TDP { get; set; }
+        [Required(ErrorMessage = "Введите TDP")]
+        public ushort TDP { get; set; }
+
+        [Display(Name = "Длина")]
+        [Required(ErrorMessage = "Введите длину")]
+        public ushort Length { get; set; }
     }
 }
