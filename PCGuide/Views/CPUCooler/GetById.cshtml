@@ -1,0 +1,16 @@
+﻿@model CPUCoolerViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div>
+    <h2>@Model.Name</h2>
+    <div>
+        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model?.ImageData ?? Array.Empty<byte>())" >
+        <p>Название: @Model.Name</p>
+        <p>Производитель: @Model.Company</p>
+        <p>Высота: @Model.Height мм</p>
+        <p>TDP: @Model.TDP Вт</p>
+    </div>
+</div>

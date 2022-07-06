@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using PCGuide.Domain.ViewModels;
+using PCGuide.Domain.Entities;
+using PCGuide.Domain.ViewModels.Account;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace PCGuide.Controllers
@@ -31,19 +34,56 @@ namespace PCGuide.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = await _userManager.FindByNameAsync(model.UserName);
+                var user = await _userManager.FindByNameAsync(model.UserName);
                 
                 if (user != null)
                 {
-                    await _signInManager.SignOutAsync();
                     Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+
                     if (result.Succeeded)
                     {
                         return Redirect(returnUrl ?? "/");
                     }
-                }
 
-                ModelState.AddModelError(nameof(LoginViewModel.UserName), "Неверный логин или пароль");
+                    ModelState.AddModelError(nameof(LoginViewModel.UserName), "Неверный логин или пароль");
+                }
+            }
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = model.UserName,
+                    Email = model.Email
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, false);
+                    return Redirect(returnUrl ?? "/");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
             }
 
             return View(model);
@@ -54,6 +94,13 @@ namespace PCGuide.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Index()
+        {
+            var user = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
+            return View((UserViewModel)user);
         }
     }
 }

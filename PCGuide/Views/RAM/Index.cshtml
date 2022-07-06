@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RAMViewModel>
+
+@{
+    ViewBag.Title = "Процессоры";
+}
+
+@if (Model != null)
+{
+    <div class="pc_parts_list">
+        @foreach (var entity in Model)
+        {
+            <div class="pc_parts_block">
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(entity?.ImageData ?? Array.Empty<byte>())" >
+                <div class="pc_parts_desc">
+                    <a asp-area="" asp-controller="RAM" asp-action="GetById" asp-route-id="@entity.Id">
+                        @entity.Name
+                    </a>
+                    <div class="pc_parts_params">
+                        <p>Производитель: @entity.Company</p>
+                        <p>Частота: @entity.ClockSpeed</p>
+                        <p>Задержки: @entity.Delay</p>
+                        <p>Объём: @entity.MemoryCapacity</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

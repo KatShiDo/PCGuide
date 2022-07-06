@@ -1,0 +1,20 @@
+﻿@model GPUViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div>
+    <h2>@Model.Name</h2>
+    <div>
+        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model?.ImageData ?? Array.Empty<byte>())" >
+        <p>Название: @Model.Name</p>
+        <p>Производитель: @Model.Company</p>
+        <p>Частота: @Model.ClockSpeed ГГц</p>
+        <p>Длина: @Model.Length мм</p>
+        <p>Объём видеопамяти: @Model.MemoryCapacity Гб</p>
+        <p>Тип видеопамяти: @Model.MemoryType</p>
+        <p>TDP: @Model.TDP Вт</p>
+        <p>Техпроцесс: @Model.TechnicalProcess</p>
+    </div>
+</div>

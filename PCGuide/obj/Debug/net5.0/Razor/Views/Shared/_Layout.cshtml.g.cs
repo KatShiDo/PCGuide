@@ -40,8 +40,15 @@ using PCGuide.Service;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "D:\Projects\github\PCGuide\PCGuide\Views\_ViewImports.cshtml"
+using PCGuide.Domain.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"db725c186138d6468c585eb76abea835084d6efa", @"/Views/Shared/_Layout.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bd64682ca5f31abcb0f5246c795e824c227bcd14", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e0f3585db3c6fbb6003430b82a1d4b20dce857e3", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__Layout : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -72,7 +79,7 @@ using PCGuide.Service;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db725c186138d6468c585eb76abea835084d6efa3610", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db725c186138d6468c585eb76abea835084d6efa3793", async() => {
                 WriteLiteral("\r\n    ");
 #nullable restore
 #line 4 "D:\Projects\github\PCGuide\PCGuide\Views\Shared\_Layout.cshtml"
@@ -102,7 +109,7 @@ Write(await Html.PartialAsync("_CssPartial"));
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db725c186138d6468c585eb76abea835084d6efa5049", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db725c186138d6468c585eb76abea835084d6efa5232", async() => {
                 WriteLiteral("\r\n    ");
 #nullable restore
 #line 8 "D:\Projects\github\PCGuide\PCGuide\Views\Shared\_Layout.cshtml"

@@ -1,0 +1,15 @@
+﻿@model UserViewModel
+
+@{
+    var strTitle = "Аккаунт";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <p>Никнейм: @Model.UserName</p>
+        <p>Email: @Model.Email</p>
+        <a asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a>
+    </div>
+</div>

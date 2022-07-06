@@ -70,13 +70,44 @@ namespace PCGuide.Service.Implementations
 
                 return new BaseResponse<CPUViewModel>
                 {
-                    Data = CPU.ToViewModel(),
+                    Data = (CPUViewModel)CPU,
                     StatusCode = StatusCode.OK
                 };
             }
             catch (Exception ex)
             {
                 return new BaseResponse<CPUViewModel>
+                {
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<CPU>> GetModelByIdAsync(Guid id)
+        {
+            try
+            {
+                var CPU = await _CPURepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+
+                if (CPU == null)
+                {
+                    return new BaseResponse<CPU>
+                    {
+                        Description = "CPU not found",
+                        StatusCode = StatusCode.NotFound
+                    };
+                }
+
+                return new BaseResponse<CPU>
+                {
+                    Data = CPU,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<CPU>
                 {
                     Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
@@ -122,7 +153,7 @@ namespace PCGuide.Service.Implementations
         {
             try
             {
-                var CPU = viewModel.ToModel();
+                var CPU = (CPU)viewModel;
                 await _CPURepository.CreateAsync(CPU);
 
                 return new BaseResponse<CPU>
@@ -156,7 +187,7 @@ namespace PCGuide.Service.Implementations
                     };
                 }
 
-                CPU = viewModel.ToModel();
+                viewModel.CopyToModel(ref CPU);
                 await _CPURepository.UpdateAsync(CPU);
 
                 return new BaseResponse<CPU>

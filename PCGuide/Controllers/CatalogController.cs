@@ -18,7 +18,7 @@ namespace PCGuide.Controllers
 
         public IActionResult Index()
         {
-            return View(_textFieldService.GetAll().Data.FirstOrDefault(x => x.CodeWord == "PageCatalog").ToViewModel());
+            return View((TextFieldViewModel)_textFieldService.GetAll().Data.FirstOrDefault(x => x.CodeWord == "PageCatalog"));
         }
     }
 }

@@ -2,10 +2,8 @@
 
 namespace PCGuide.Domain.Entities
 {
-    public class TextField
+    public class TextField : EntityBase
     {
-        public Guid Id { get; set; }
-
         public string CodeWord { get; set; }
 
         public string Title { get; set; } = "Информационная страница";

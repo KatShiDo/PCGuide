@@ -36,7 +36,7 @@ namespace PCGuide.Service.Implementations
                     };
                 }
 
-                textField = viewModel.ToModel();
+                viewModel.CopyToModel(ref textField);
                 await _textFieldRepository.UpdateAsync(textField);
 
                 return new BaseResponse<TextField>
@@ -104,7 +104,7 @@ namespace PCGuide.Service.Implementations
 
                 return new BaseResponse<TextFieldViewModel>
                 {
-                    Data = textField.ToViewModel(),
+                    Data = (TextFieldViewModel)textField,
                     StatusCode = StatusCode.OK
                 };
             }
@@ -118,14 +118,92 @@ namespace PCGuide.Service.Implementations
             }
         }
 
-        public Task<IBaseResponse<TextField>> CreateAsync(TextFieldViewModel viewModel)
+        public async Task<IBaseResponse<TextField>> CreateAsync(TextFieldViewModel viewModel)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var textFields = (TextField)viewModel;
+                await _textFieldRepository.CreateAsync(textFields);
+
+                return new BaseResponse<TextField>
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = textFields
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<TextField>
+                {
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
-        public Task<IBaseResponse<bool>> DeleteAsync(Guid id)
+        public async Task<IBaseResponse<bool>> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var textFields = await _textFieldRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+
+                if (textFields == null)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Description = "News not found",
+                        StatusCode = StatusCode.NotFound,
+                        Data = false
+                    };
+                }
+
+                await _textFieldRepository.DeleteAsync(textFields);
+
+                return new BaseResponse<bool>
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>
+                {
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<TextField>> GetModelByIdAsync(Guid id)
+        {
+            try
+            {
+                var textField = await _textFieldRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+
+                if (textField == null)
+                {
+                    return new BaseResponse<TextField>
+                    {
+                        Description = "TextField not found",
+                        StatusCode = StatusCode.NotFound
+                    };
+                }
+
+                return new BaseResponse<TextField>
+                {
+                    Data = textField,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<TextField>()
+                {
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
     }
 }

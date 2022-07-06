@@ -21,7 +21,7 @@ namespace PCGuide.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(_textFieldService.GetAll().Data.Select(x => x.ToViewModel()));
+            return View(_textFieldService.GetAll().Data.Select(x => (TextFieldViewModel)x));
         }
 
         public async Task<IActionResult> Edit(Guid id)

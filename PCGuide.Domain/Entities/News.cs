@@ -2,10 +2,8 @@
 
 namespace PCGuide.Domain.Entities
 {
-    public class News
+    public class News : EntityBase
     {
-        public Guid Id { get; set; }
-
         public byte[] ImageData { get; set; }
 
         public DateTime DateCreate { get; set; }

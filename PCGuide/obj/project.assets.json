@@ -2014,6 +2014,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.16",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.15",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.15"
         },
         "compile": {
@@ -7031,7 +7032,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   },

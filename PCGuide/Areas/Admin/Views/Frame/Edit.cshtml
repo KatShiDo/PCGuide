@@ -1,0 +1,51 @@
+﻿@model FrameViewModel
+
+@{
+    string strTitle = "Редактировать корпус";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@ViewBag.Title</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="Frame" asp-action="Edit" method="post" enctype="multipart/form-data">
+
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Company"></label>
+                <select asp-for="Company" asp-items="@Html.GetEnumSelectList<Company>()"></select>
+            </div>
+            <div>
+                <label asp-for="Height"></label>
+                <input asp-for="Height" type="text" />
+                <span asp-validation-for="Height"></span>
+            </div>
+            <div>
+                <label asp-for="Width"></label>
+                <input asp-for="Width" type="text" />
+                <span asp-validation-for="Width"></span>
+            </div>
+            <div>
+                <label asp-for="Lenght"></label>
+                <input asp-for="Lenght" type="text" />
+                <span asp-validation-for="Lenght"></span>
+            </div>
+            <div>
+                <label asp-for="MotherboardType"></label>
+                <select asp-for="MotherboardType" asp-items="@Html.GetEnumSelectList<MotherboardType>()"></select>
+            </div>
+            <div>
+                <label asp-for="Image"></label>
+                <input asp-for="Image" type="file" />
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model?.ImageData ?? Array.Empty<byte>())" >
+            </div>
+
+            <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+</div>

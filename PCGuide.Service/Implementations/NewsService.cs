@@ -70,7 +70,7 @@ namespace PCGuide.Service.Implementations
 
                 return new BaseResponse<NewsViewModel>
                 {
-                    Data = news.ToViewModel(),
+                    Data = (NewsViewModel)news,
                     StatusCode = StatusCode.OK
                 };
             }
@@ -122,7 +122,7 @@ namespace PCGuide.Service.Implementations
         {
             try
             {
-                var news = viewModel.ToModel();
+                var news = (News)viewModel;
                 await _newsRepository.CreateAsync(news);
 
                 return new BaseResponse<News>
@@ -156,9 +156,40 @@ namespace PCGuide.Service.Implementations
                     };
                 }
 
-                news = viewModel.ToModel();
+                viewModel.CopyToModel(ref news);
 
                 await _newsRepository.UpdateAsync(news);
+
+                return new BaseResponse<News>
+                {
+                    Data = news,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<News>
+                {
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<News>> GetModelByIdAsync(Guid id)
+        {
+            try
+            {
+                var news = await _newsRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+
+                if (news == null)
+                {
+                    return new BaseResponse<News>
+                    {
+                        Description = "News not found",
+                        StatusCode = StatusCode.NotFound
+                    };
+                }
 
                 return new BaseResponse<News>
                 {

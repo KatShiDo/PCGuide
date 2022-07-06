@@ -25,7 +25,7 @@ namespace PCGuide.Service.Implementations
         {
             try
             {
-                var CPUCooler = viewModel.ToModel();
+                var CPUCooler = (CPUCooler)viewModel;
                 await _CPUCoolerRepository.CreateAsync(CPUCooler);
 
                 return new BaseResponse<CPUCooler>
@@ -93,7 +93,7 @@ namespace PCGuide.Service.Implementations
                     };
                 }
 
-                CPUCooler = viewModel.ToModel();
+                viewModel.CopyToModel(ref CPUCooler);
                 await _CPUCoolerRepository.UpdateAsync(CPUCooler);
 
                 return new BaseResponse<CPUCooler>
@@ -161,13 +161,44 @@ namespace PCGuide.Service.Implementations
 
                 return new BaseResponse<CPUCoolerViewModel>
                 {
-                    Data = CPUCooler.ToViewModel(),
+                    Data = (CPUCoolerViewModel)CPUCooler,
                     StatusCode = StatusCode.OK
                 };
             }
             catch (Exception ex)
             {
                 return new BaseResponse<CPUCoolerViewModel>
+                {
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<CPUCooler>> GetModelByIdAsync(Guid id)
+        {
+            try
+            {
+                var CPUCooler = await _CPUCoolerRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+
+                if (CPUCooler == null)
+                {
+                    return new BaseResponse<CPUCooler>
+                    {
+                        Description = "CPUCooler not found",
+                        StatusCode = StatusCode.NotFound
+                    };
+                }
+
+                return new BaseResponse<CPUCooler>
+                {
+                    Data = CPUCooler,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<CPUCooler>
                 {
                     Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError

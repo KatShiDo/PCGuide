@@ -18,8 +18,4 @@
     <ProjectReference Include="..\PCGuide.Service\PCGuide.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\ViewComponents\" />
-  </ItemGroup>
-
 </Project>

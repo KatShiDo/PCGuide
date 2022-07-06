@@ -1,20 +1,11 @@
 ﻿using PCGuide.Domain.Enum;
 using System;
+using System.Collections.Generic;
 
 namespace PCGuide.Domain.Entities
 {
-    public class Frame
+    public class Frame : PCPartBase
     {
-        public Guid Id { get; set; }
-
-        public byte[] ImageData { get; set; }
-
-        public DateTime DateCreate { get; set; }
-
-        public string Name { get; set; }
-
-        public Company Company { get; set; }
-
         public ushort Height { get; set; }
 
         public ushort Width { get; set; }

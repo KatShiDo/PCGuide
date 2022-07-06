@@ -1,0 +1,29 @@
+﻿@model CPUViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div>
+    <h2>@Model.Name</h2>
+    <div>
+        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model?.ImageData ?? Array.Empty<byte>())" >
+        <p>Название: @Model.Name</p>
+        <p>Производитель: @Model.Company</p>
+        <p>Поколение: @Model.Series</p>
+        <p>Сокет: @Model.Socket</p>
+        <p>Техпроцесс: @Model.TechnicalProcess</p>
+        <p>Количество ядер: @Model.CoresCount</p>
+        <p>Количество потоков: @Model.ThreadsCount</p>
+        <p>Кэш: @Model.CacheCapacity МБ</p>
+        @if (Model.HaveIntegratedGraphics)
+        {
+            <p>Интегрированная графика: @Model.IntegratedGraphics</p>
+        }
+        <p>Частота: @Model.ClockSpeed ГГц</p>
+        <p>Частота в бусте: @Model.BoostClockSpeed ГГц</p>
+        <p>TDP: @Model.TDP Вт</p>
+        <p>Тип оперативной памяти: @Model.RAMType</p>
+        <p>Количество потоков оперативной памяти: @Model.RAMThreads</p>
+    </div>
+</div>

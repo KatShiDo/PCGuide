@@ -11,6 +11,8 @@ namespace PCGuide.Service.Interfaces
 
         Task<IBaseResponse<TViewModel>> GetByIdAsync(Guid id);
 
+        Task<IBaseResponse<T>> GetModelByIdAsync(Guid id);
+
         Task<IBaseResponse<T>> CreateAsync(TViewModel viewModel);
 
         Task<IBaseResponse<bool>> DeleteAsync(Guid id);

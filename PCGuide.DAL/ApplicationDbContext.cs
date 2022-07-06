@@ -23,7 +23,6 @@ namespace PCGuide.DAL
         public DbSet<PowerUnit> PowerUnits { get; set; }
         public DbSet<RAM> RAM { get; set; }
         public DbSet<SSD> SSDs { get; set; }
-        //public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -78,8 +77,8 @@ namespace PCGuide.DAL
             builder.Entity<TextField>().HasData(new TextField
             {
                 Id = new System.Guid("EBAA3373-F6AC-4EF8-A7EC-DAAB4F4FE3A9"),
-                CodeWord = "PageFeedback",
-                Title = "Обратная связь"
+                CodeWord = "PageAccount",
+                Title = "Аккаунт"
             });
 
             builder.Entity<TextField>().HasData(new TextField

@@ -49,7 +49,7 @@ namespace PCGuide.Migrations
                         new
                         {
                             Id = "F113EC5E-FC39-41CD-8CD7-046E521C9A4C",
-                            ConcurrencyStamp = "d7276dc1-7fcd-4379-8739-13f3090062f6",
+                            ConcurrencyStamp = "883196f0-cce0-40e9-9a12-9812b2fdbb5d",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +148,13 @@ namespace PCGuide.Migrations
                         {
                             Id = "F83A39C9-6960-4934-8CDC-88D0AAB64AAF",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b5089fb7-2e5f-43fb-9df6-d98ab2683f47",
+                            ConcurrencyStamp = "d7120238-63c9-4c04-bff1-26e966780426",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJK0XrF75ruKCI58GpFWB9Qgm2EW6tLu5f1/BAQN87pn5Br7671LrKBMljAX4o1VVA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJmx4O2mD0cJS6E2CEkGoU8Hb/O8g+11EUG8qpwUjpZx0fJTgg8LkpyulqX24spLig==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -652,9 +652,9 @@ namespace PCGuide.Migrations
                         new
                         {
                             Id = new Guid("ebaa3373-f6ac-4ef8-a7ec-daab4f4fe3a9"),
-                            CodeWord = "PageFeedback",
+                            CodeWord = "PageAccount",
                             Text = "Содержание заполняется администратором",
-                            Title = "Обратная связь"
+                            Title = "Аккаунт"
                         },
                         new
                         {

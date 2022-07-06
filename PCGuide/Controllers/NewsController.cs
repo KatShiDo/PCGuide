@@ -21,33 +21,33 @@ namespace PCGuide.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetNews()
+        public IActionResult Index()
         {
             var responseNews = _newsService.GetAll();
             var responseTextField = _textFieldService.GetAll();
             if (responseNews.StatusCode == Domain.Enum.StatusCode.OK && responseTextField.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 ViewBag.TextField = responseTextField.Data.FirstOrDefault(x => x.CodeWord == "PageNews");
-                return View(responseNews.Data.Select(x => x.ToViewModel()));
+                return View(responseNews.Data.Select(x => (NewsViewModel)x));
             }
 
             return RedirectToAction("Error", $"{responseNews.Description},{responseTextField.Description}");
         }
 
         [HttpGet]
-        public IActionResult GetNewsByTag(string tag)
+        public IActionResult GetByTag(string tag)
         {
             var response = _newsService.GetAll();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return View("GetNews", response.Data.Select(x => x.ToViewModel()).Where(x => x.Tags.Contains(tag)));
+                return View("GetNews", response.Data.Select(x => (NewsViewModel)x).Where(x => x.Tags.Contains(tag)));
             }
 
             return RedirectToAction("Error", $"{response.Description}");
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetNewsById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var response = await _newsService.GetByIdAsync(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)

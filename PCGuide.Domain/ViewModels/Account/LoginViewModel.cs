@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PCGuide.Domain.ViewModels
+namespace PCGuide.Domain.ViewModels.Account
 {
     public class LoginViewModel
     {
@@ -9,7 +9,7 @@ namespace PCGuide.Domain.ViewModels
         public string UserName { get; set; }
 
         [Required]
-        [UIHint("password")]
+        [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
 

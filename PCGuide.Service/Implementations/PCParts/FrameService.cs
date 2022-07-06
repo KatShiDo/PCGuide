@@ -25,7 +25,7 @@ namespace PCGuide.Service.Implementations
         {
             try
             {
-                var frame = viewModel.ToModel();
+                var frame = (Frame)viewModel;
                 await _frameRepository.CreateAsync(frame);
 
                 return new BaseResponse<Frame>
@@ -93,7 +93,7 @@ namespace PCGuide.Service.Implementations
                     };
                 }
 
-                frame = viewModel.ToModel();
+                viewModel.CopyToModel(ref frame);
                 await _frameRepository.UpdateAsync(frame);
 
                 return new BaseResponse<Frame>
@@ -161,13 +161,44 @@ namespace PCGuide.Service.Implementations
 
                 return new BaseResponse<FrameViewModel>
                 {
-                    Data = frame.ToViewModel(),
+                    Data = (FrameViewModel)frame,
                     StatusCode = StatusCode.OK
                 };
             }
             catch (Exception ex)
             {
                 return new BaseResponse<FrameViewModel>
+                {
+                    Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<Frame>> GetModelByIdAsync(Guid id)
+        {
+            try
+            {
+                var frame = await _frameRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+
+                if (frame == null)
+                {
+                    return new BaseResponse<Frame>
+                    {
+                        Description = "Frame not found",
+                        StatusCode = StatusCode.NotFound
+                    };
+                }
+
+                return new BaseResponse<Frame>
+                {
+                    Data = frame,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Frame>
                 {
                     Description = $"[{System.Reflection.MethodBase.GetCurrentMethod().Name}] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError

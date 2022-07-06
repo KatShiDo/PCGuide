@@ -22,7 +22,14 @@ namespace PCGuide.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(_newsService.GetAll().Data.Select(x => x.ToViewModel()));
+            var response = _newsService.GetAll();
+
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Data.Select(x => (NewsViewModel)x));
+            }
+
+            return View("Error", $"{response.Description}");
         }
 
         public async Task<IActionResult> Edit(Guid id)

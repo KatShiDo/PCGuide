@@ -1477,6 +1477,7 @@
       "PCGuide.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.16",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.15",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.15"
         },
         "runtime": {
